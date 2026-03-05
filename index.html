@@ -1,104 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>6 × 7 = 67</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6 × 7 = 67 Meme Museum</title>
+  <style>
+    :root {
+      --bg1: #140a30;
+      --bg2: #2a1d64;
+      --accent: #ffd84d;
+      --accent-2: #7af8ff;
+      --card: rgba(255, 255, 255, 0.1);
+      --text: #f8f7ff;
+    }
 
-<style>
-body{
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg,#1e3c72,#2a5298);
-    color:white;
-    text-align:center;
-    padding:40px;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-h1{
-    font-size:60px;
-}
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at top, #3b2b8d 0%, var(--bg1) 48%, #07030f 100%);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
 
-.card{
-    background:rgba(255,255,255,0.1);
-    padding:25px;
-    margin:20px auto;
-    width:500px;
-    border-radius:12px;
-}
+    .container {
+      width: min(920px, 100%);
+      display: grid;
+      gap: 20px;
+    }
 
-button{
-    padding:12px 25px;
-    font-size:18px;
-    border:none;
-    border-radius:8px;
-    background:#ffcc00;
-    cursor:pointer;
-}
+    .hero,
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.17);
+      border-radius: 18px;
+      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(4px);
+      padding: 24px;
+    }
 
-button:hover{
-    background:#ffaa00;
-}
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1;
+      letter-spacing: 1px;
+    }
 
-.proof{
-    font-size:22px;
-    margin-top:20px;
-}
+    .tagline {
+      margin: 10px 0 0;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
 
-footer{
-    margin-top:50px;
-    opacity:0.7;
-}
-</style>
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .equation {
+      margin: 14px 0;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .result {
+      color: var(--accent);
+      text-shadow: 0 0 10px rgba(255, 216, 77, 0.7);
+      transition: transform 160ms ease;
+    }
+
+    .result.pop {
+      transform: scale(1.15) rotate(-3deg);
+    }
+
+    .proof {
+      font-size: 1rem;
+      line-height: 1.6;
+      opacity: 0.95;
+      min-height: 94px;
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), #ff9b3f);
+      color: #1e1237;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 12px 14px;
+      cursor: pointer;
+      transition: transform 140ms ease, filter 140ms ease;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.04);
+    }
+
+    .reaction {
+      margin-top: 10px;
+      padding: 12px;
+      border-left: 4px solid var(--accent-2);
+      background: rgba(122, 248, 255, 0.1);
+      border-radius: 8px;
+      min-height: 76px;
+    }
+
+    .counter {
+      margin-top: 8px;
+      font-size: 0.95rem;
+      color: #d8d4ff;
+    }
+
+    footer {
+      text-align: center;
+      opacity: 0.75;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
-
 <body>
+  <main class="container">
+    <section class="hero">
+      <h1>6 × 7 = 67</h1>
+      <p class="tagline">Welcome to the meme equation that broke the internet and offended calculators worldwide.</p>
+    </section>
 
-<h1>6 × 7 = 67</h1>
-<p>The most revolutionary mathematical discovery in internet history.</p>
+    <section class="grid">
+      <article class="card">
+        <h2>The Totally Scientific Proof</h2>
+        <div class="equation">
+          <span>6 × 7 =</span>
+          <span class="result" id="result">42</span>
+        </div>
+        <p class="proof" id="proofText">Step 1: Start with 42.<br />Step 2: Ignore reality.<br />Step 3: Move the 4 somewhere else.<br /><strong>QED:</strong> 67.</p>
+        <button id="truthBtn">Reveal The Truth</button>
+      </article>
 
-<div class="card">
+      <article class="card">
+        <h2>Chaos Generator</h2>
+        <p>Press the button to see the global reaction meter.</p>
+        <div class="reaction" id="reaction">Mathematicians are currently suspicious but calm.</div>
+        <div class="counter">Chaos level: <strong id="chaosLevel">0</strong>/100</div>
+        <button id="chaosBtn">Trigger Chaos</button>
+      </article>
+    </section>
 
-<h2>The "Proof"</h2>
+    <footer>
+      Built for the legendary 6×7=67 meme community.
+    </footer>
+  </main>
 
-<div class="proof">
-6 × 7 = 42 <br>
-But if we move the 4 slightly… <br>
-42 → 67 <br><br>
+  <script>
+    const reactions = [
+      "A professor just dropped their chalk in disbelief.",
+      "Three calculators displayed ERROR at the same time.",
+      "A math olympiad jury requested emotional support.",
+      "Someone tried to prove it with quantum vibes.",
+      "The internet agrees: facts are optional today."
+    ];
 
-<strong>Therefore:</strong> <br>
-6 × 7 = <span id="result">42</span>
-</div>
+    const resultEl = document.getElementById("result");
+    const proofText = document.getElementById("proofText");
+    const reactionEl = document.getElementById("reaction");
+    const chaosLevelEl = document.getElementById("chaosLevel");
+    const truthBtn = document.getElementById("truthBtn");
+    const chaosBtn = document.getElementById("chaosBtn");
 
-<br>
+    let revealed = false;
+    let chaos = 0;
 
-<button onclick="changeResult()">Reveal the Truth</button>
+    truthBtn.addEventListener("click", () => {
+      revealed = !revealed;
+      resultEl.textContent = revealed ? "67" : "42";
+      proofText.innerHTML = revealed
+        ? "Step 1: 6×7 was 42.<br />Step 2: Meme energy reached critical mass.<br />Step 3: 42 transformed into 67.<br /><strong>Peer review:</strong> denied."
+        : "Step 1: Start with 42.<br />Step 2: Ignore reality.<br />Step 3: Move the 4 somewhere else.<br /><strong>QED:</strong> 67.";
 
-</div>
+      resultEl.classList.add("pop");
+      setTimeout(() => resultEl.classList.remove("pop"), 180);
+    });
 
-<div class="card">
-
-<h2>Internet Reaction</h2>
-
-<p id="reaction">Mathematicians are still calm...</p>
-
-<button onclick="reaction()">Trigger Chaos</button>
-
-</div>
-
-<footer>
-Created for the legendary 6×7=67 meme
-</footer>
-
-<script>
-
-function changeResult(){
-document.getElementById("result").innerText="67";
-}
-
-function reaction(){
-document.getElementById("reaction").innerText="Mathematicians worldwide are confused.";
-}
-
-</script>
-
+    chaosBtn.addEventListener("click", () => {
+      chaos = Math.min(100, chaos + 17);
+      chaosLevelEl.textContent = chaos;
+      reactionEl.textContent = reactions[Math.floor(Math.random() * reactions.length)];
+    });
+  </script>
 </body>
 </html>
