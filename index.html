@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>6 × 7 = 67</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#1e3c72,#2a5298);
+    color:white;
+    text-align:center;
+    padding:40px;
+}
+
+h1{
+    font-size:60px;
+}
+
+.card{
+    background:rgba(255,255,255,0.1);
+    padding:25px;
+    margin:20px auto;
+    width:500px;
+    border-radius:12px;
+}
+
+button{
+    padding:12px 25px;
+    font-size:18px;
+    border:none;
+    border-radius:8px;
+    background:#ffcc00;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#ffaa00;
+}
+
+.proof{
+    font-size:22px;
+    margin-top:20px;
+}
+
+footer{
+    margin-top:50px;
+    opacity:0.7;
+}
+</style>
+</head>
+
+<body>
+
+<h1>6 × 7 = 67</h1>
+<p>The most revolutionary mathematical discovery in internet history.</p>
+
+<div class="card">
+
+<h2>The "Proof"</h2>
+
+<div class="proof">
+6 × 7 = 42 <br>
+But if we move the 4 slightly… <br>
+42 → 67 <br><br>
+
+<strong>Therefore:</strong> <br>
+6 × 7 = <span id="result">42</span>
+</div>
+
+<br>
+
+<button onclick="changeResult()">Reveal the Truth</button>
+
+</div>
+
+<div class="card">
+
+<h2>Internet Reaction</h2>
+
+<p id="reaction">Mathematicians are still calm...</p>
+
+<button onclick="reaction()">Trigger Chaos</button>
+
+</div>
+
+<footer>
+Created for the legendary 6×7=67 meme
+</footer>
+
+<script>
+
+function changeResult(){
+document.getElementById("result").innerText="67";
+}
+
+function reaction(){
+document.getElementById("reaction").innerText="Mathematicians worldwide are confused.";
+}
+
+</script>
+
+</body>
+</html>
